@@ -7,14 +7,19 @@ spring:
           server:
               webflux:
                 routes:
+                      - id: auth-service
+                        uri: lb://AUTH-SERVICE
+                        predicates:
+                          - Path=/api/auth/**
+
                       - id: product-service
                         uri: lb://PRODUCT-SERVICE
                         predicates:
                           - Path=/api/products/**
-                        filters:
-                          - AddResponseHeader=X-System-Name, Api-Gateway-System
+    jwt:
+      secret: SecretKeyMicroservice12131202131!
 server:
-    port: 8080
+    port: 8081
 
 eureka:
     client:

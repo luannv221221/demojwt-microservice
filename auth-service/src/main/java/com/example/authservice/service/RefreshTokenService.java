@@ -1,4 +1,10 @@
 package com.example.authservice.service;
 
-public class RefreshTokenService {
+import com.example.authservice.model.entity.RefreshToken;
+import org.springframework.stereotype.Service;
+
+public interface RefreshTokenService {
+    RefreshToken createRefreshToken(String username);
+    RefreshToken findByToken(String token);
+    RefreshToken verifyExpiration(RefreshToken token);
 }
